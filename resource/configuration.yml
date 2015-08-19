@@ -1,0 +1,12 @@
+population:
+  elite: 2
+  parent_survivor: 18
+  offspring: 100
+  offspring_survivor: 30
+  migration: 0
+
+evaluation_function: TspPermutationEvaluationFunction
+
+roulettes:
+   variation:
+
