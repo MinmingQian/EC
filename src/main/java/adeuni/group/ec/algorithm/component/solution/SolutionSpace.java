@@ -3,6 +3,7 @@ package adeuni.group.ec.algorithm.component.solution;
 import adeuni.group.ec.algorithm.component.representation.InterfaceRepresentation;
 import adeuni.group.ec.algorithm.component.solution.comparator.SolutionFitnessComparator;
 
+import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +14,9 @@ import java.util.List;
  * Created by qianminming on 15/08/15.
  * TODO: to findout why here need the comparator, and what is the comparator
  */
-public class SolutionSpace<T extends InterfaceRepresentation> {
+public class SolutionSpace<T extends InterfaceRepresentation> implements Serializable{
+
+    private static final long serialVersionUID = 6043249770566185045L;
 
     List<Solution<T>> solutionList;
 

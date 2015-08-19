@@ -1,7 +1,9 @@
 package adeuni.group.ec.algorithm.utility.factory;
 
+import adeuni.group.ec.algorithm.component.operator.selection.parent.BestSelection;
 import adeuni.group.ec.algorithm.component.operator.variation.permutation.PermutationOrderCrossover;
 import adeuni.group.ec.algorithm.component.operator.variation.permutation.PermutationPMXCrossover;
+import adeuni.group.ec.algorithm.component.operator.variation.permutation.PermutationSwapMutation;
 import adeuni.group.ec.algorithm.component.representation.permutation.PermutationRepresentation;
 import adeuni.group.ec.algorithm.component.termination.ExecutionTimeTerminationCriterion;
 import adeuni.group.ec.algorithm.component.termination.IterationTerminationCriterion;
@@ -11,6 +13,8 @@ import adeuni.group.ec.algorithm.configuration.yml.YamlConfiguration;
 import adeuni.group.ec.algorithm.utility.roulette.RouletteException;
 import adeuni.group.ec.algorithm.utility.roulette.operator.VariationCell;
 import adeuni.group.ec.algorithm.utility.roulette.operator.VariationRoulette;
+import adeuni.group.ec.algorithm.utility.roulette.selection.SelectionCell;
+import adeuni.group.ec.algorithm.utility.roulette.selection.SelectionRoulette;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
@@ -63,6 +67,9 @@ public class ConfigurationFactory {
             } else if (variationCellType.equals("PermutationOrderCrossover")) {
                 PermutationOrderCrossover permutationOrderCrossover = new PermutationOrderCrossover();
                 variationCell = new VariationCell(probability, permutationOrderCrossover);
+            } else if (variationCellType.equals("PermutationSwapMutation")) {
+                PermutationSwapMutation permutationSwapMutation = new PermutationSwapMutation();
+                variationCell = new VariationCell(probability, permutationSwapMutation);
             }
 
             variationRoulette.addCell(variationCell);
@@ -71,17 +78,75 @@ public class ConfigurationFactory {
 
 
 
-        //configure parent selection roulette todo
+        //configure parent selection roulette
         double totalParentSelectionRouletteWeight = 0;
+        for (Map<String, Object> parentSelectionCellMap: yamlConfiguration.parentSelectionRouletteCellList) {
+            totalParentSelectionRouletteWeight += (double)parentSelectionCellMap.get("weight");
+        }
+        SelectionRoulette parentSelectionRoulette = new SelectionRoulette();
+        for (Map<String, Object> parentSelectionCellMap: yamlConfiguration.parentSelectionRouletteCellList) {
+            double probability = (double)parentSelectionCellMap.get("weight")/totalParentSelectionRouletteWeight;
+            SelectionCell selectionCell = null;
+
+            //construct each selection operator type
+            String selectionCellType = (String) parentSelectionCellMap.get("selection");
+            if(selectionCellType.equals("BestSelection")) {
+                BestSelection bestSelection = new BestSelection<>();
+                selectionCell = new SelectionCell(probability,bestSelection);
+            }
+
+            parentSelectionRoulette.addCell(selectionCell);
+        }
+        configuration.setParentSelectionRoulette(parentSelectionRoulette);
 
 
-        //configure parent survivor selection roulette todo
+
+        //configure parent survivor selection roulette
         double totalParentSurvivorSelectionRouletteWeight = 0;
+        for (Map<String, Object> parentSurvivorSelectionCellMap: yamlConfiguration.parentSurvivorSelectionRouletteCellList) {
+            totalParentSurvivorSelectionRouletteWeight += (double)parentSurvivorSelectionCellMap.get("weight");
+        }
+        SelectionRoulette parentSurvivorSelectionRoulette = new SelectionRoulette();
+        for (Map<String, Object> parentSurvivorSelectionCellMap: yamlConfiguration.parentSurvivorSelectionRouletteCellList) {
+            double probability = (double)parentSurvivorSelectionCellMap.get("weight")/totalParentSelectionRouletteWeight;
+            SelectionCell selectionCell = null;
+
+            //construct each selection operator type
+            String selectionCellType = (String) parentSurvivorSelectionCellMap.get("selection");
+            if(selectionCellType.equals("BestSelection")) {
+                BestSelection bestSelection = new BestSelection<>();
+                selectionCell = new SelectionCell(probability,bestSelection);
+            }
 
 
-        //configure offspring survivor selection roulette todo
+            parentSurvivorSelectionRoulette.addCell(selectionCell);
+        }
+        configuration.setParentSurvivorSelectionRoulette(parentSurvivorSelectionRoulette);
+
+
+        //configure offspring survivor selection roulette
         double totalOffspringSurvivorSelectionRouletteWeight = 0;
-        
+        for (Map<String, Object> offspringSurvivorSelectionCellMap: yamlConfiguration.offspringSurvivorSelectionRouletteCellList) {
+            totalOffspringSurvivorSelectionRouletteWeight += (double)offspringSurvivorSelectionCellMap.get("weight");
+        }
+        SelectionRoulette offspringSurvivorSelectionRoulette = new SelectionRoulette();
+        for (Map<String, Object> offspringSurvivorSelectionCellMap: yamlConfiguration.offspringSurvivorSelectionRouletteCellList) {
+            double probability = (double)offspringSurvivorSelectionCellMap.get("weight")/totalParentSelectionRouletteWeight;
+            SelectionCell selectionCell = null;
+
+            //construct each selection operator type
+            String selectionCellType = (String) offspringSurvivorSelectionCellMap.get("selection");
+            if(selectionCellType.equals("BestSelection")) {
+                BestSelection bestSelection = new BestSelection<>();
+                selectionCell = new SelectionCell(probability,bestSelection);
+            }
+
+
+
+            offspringSurvivorSelectionRoulette.addCell(selectionCell);
+        }
+        configuration.setOffspringSurvivorSelectionRoulette(offspringSurvivorSelectionRoulette);
+
 
         //configure termination criteria pool
         TerminationCriteriaPool terminationCriteriaPool = new TerminationCriteriaPool();

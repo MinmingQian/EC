@@ -2,12 +2,13 @@ package adeuni.group.ec.algorithm.component.solution;
 
 import adeuni.group.ec.algorithm.component.representation.InterfaceRepresentation;
 
+import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 
 /**
  * Created by qianminming on 14/08/15.
  */
-public class Solution<T extends InterfaceRepresentation> {
+public class Solution<T extends InterfaceRepresentation> implements Serializable{
 
     private static final long serialVersionUID = 6304762817303035868L;
 

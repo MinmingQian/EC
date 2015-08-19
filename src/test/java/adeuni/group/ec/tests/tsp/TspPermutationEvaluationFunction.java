@@ -10,6 +10,12 @@ public class TspPermutationEvaluationFunction extends AbstractEvaluationFunction
 
     private static final long serialVersionUID = -628201028586531963L;
 
+    TspProblem tspProblemInstance;
+
+    public TspPermutationEvaluationFunction () {
+
+    }
+
     @Override
     public double evaluate(PermutationRepresentation representation) {
         return 200;

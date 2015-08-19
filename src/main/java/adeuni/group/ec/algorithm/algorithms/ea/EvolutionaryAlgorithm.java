@@ -35,6 +35,7 @@ public class EvolutionaryAlgorithm<T extends InterfaceRepresentation> extends Ab
         RepresentationFactory<T> representationFactory = configuration.getRepresentationFactory();
         SolutionSpace<T> solutionSpace = new SolutionSpace<>();
 
+        //init the population(solution space)
         for (int i = 0; i < solutionSpaceSize; i++) {
             solutionSpace.add(new Solution(representationFactory.createRepresentation()));
         }
@@ -133,6 +134,7 @@ public class EvolutionaryAlgorithm<T extends InterfaceRepresentation> extends Ab
 
             //added to the total list, gather all candidates(parents), gather all variations
             variationList.forEach(offspringList::add);
+            childrenNumber += variationOperator.getOutputSolutionNumber();
         }
 
         //select the offspring according to the set selection

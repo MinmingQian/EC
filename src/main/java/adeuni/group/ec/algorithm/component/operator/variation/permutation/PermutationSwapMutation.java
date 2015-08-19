@@ -6,6 +6,8 @@ import adeuni.group.ec.algorithm.component.representation.permutation.Permutatio
  * Created by Joe on 19/08/15.
  */
 public class PermutationSwapMutation extends AbstractPermutationMutationOperator{
+    private static final long serialVersionUID = 5552042971166524221L;
+
     @Override
     public void genomeMutate(PermutationRepresentation mutantGenome) {
         int genomePos1 = (int)(mutantGenome.size()*Math.random());

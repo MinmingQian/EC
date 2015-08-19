@@ -30,9 +30,9 @@ immigrateSize: 0
 #
 #NOTICE: only double allowed for weight
 variationRouletteCellList:
-  - variation: PermutationPMXCrossover
-    weight: 5.0
   - variation: PermutationOrderCrossover
+    weight: 4.0
+  - variation: PermutationSwapMutation
     weight: 4.0
 
 

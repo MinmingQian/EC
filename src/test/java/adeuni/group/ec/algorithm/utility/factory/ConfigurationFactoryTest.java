@@ -1,5 +1,9 @@
 package adeuni.group.ec.algorithm.utility.factory;
 
+import adeuni.group.ec.algorithm.algorithms.ea.EvolutionaryAlgorithm;
+import adeuni.group.ec.algorithm.component.representation.permutation.PermutationRepresentation;
+import adeuni.group.ec.algorithm.configuration.Configuration;
+import adeuni.group.ec.tests.tsp.TspPermutationEvaluationFunction;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,6 +25,12 @@ public class ConfigurationFactoryTest {
 
     @Test
     public void testCreateConfiguration() throws Exception {
-        ConfigurationFactory.createConfiguration();
+        Configuration configuration = ConfigurationFactory.createConfiguration();
+        EvolutionaryAlgorithm algorithm = new EvolutionaryAlgorithm(configuration);
+
+        configuration.setRepresentationFactory(new RepresentationFactory<PermutationRepresentation>(PermutationRepresentation.class, 10));
+        configuration.setEvaluationFunction(new TspPermutationEvaluationFunction());
+
+        algorithm.run();
     }
 }

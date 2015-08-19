@@ -30,9 +30,6 @@ public class PermutationOrderCrossover extends AbstractPermutationCrossoverOpera
         int posStart = startPos<endPos?startPos:endPos;
         int posEnd = startPos>endPos?startPos:endPos;
 
-        System.out.println(posStart);
-        System.out.println(posEnd);
-
 
         for (int i = posStart; i <= posEnd; i++) {
             childGenome1.set(i,fatherGenome.get(i));
@@ -49,20 +46,7 @@ public class PermutationOrderCrossover extends AbstractPermutationCrossoverOpera
                 // Loop to find a spare position in the child's tour
                 childGenome1.set(addPosition,motherGenome.get(i%motherGenome.size()));
                 addPosition = (addPosition+1)%motherGenome.size();
-
-//                for (int ii = (posEnd+1)%motherGenome.size(); ii%motherGenome.size() < posStart+motherGenome.size(); ii++)
-//                {
-//                    // Spare position found, add city
-//                    if (childGenome1.get(ii%motherGenome.size()) == null)
-//                    {
-//                        childGenome1.set(ii%motherGenome.size(),motherGenome.get(i%motherGenome.size()));
-//                        break;
-//                    }
-//                }
             }
         }
-
     }
-
-
 }

@@ -8,6 +8,6 @@ import adeuni.group.ec.algorithm.component.representation.InterfaceRepresentatio
 public class AlgorithmAnalysis<T extends InterfaceRepresentation> {
 
     public void analyseAndStore(AlgorithmState<T> algorithmState) {
-        System.out.println(algorithmState.getCurrentIterationNumber());
+        System.out.println("iteration"+algorithmState.getCurrentIterationNumber());
     }
 }
