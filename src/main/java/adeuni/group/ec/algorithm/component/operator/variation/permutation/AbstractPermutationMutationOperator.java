@@ -3,7 +3,7 @@ package adeuni.group.ec.algorithm.component.operator.variation.permutation;
 import adeuni.group.ec.algorithm.component.representation.permutation.PermutationRepresentation;
 import adeuni.group.ec.algorithm.component.operator.variation.AbstractMutationOperator;
 import adeuni.group.ec.algorithm.component.solution.Solution;
-import adeuni.group.ec.algorithm.toolset.deepcopy.DeepCopy;
+import adeuni.group.ec.algorithm.utility.deepcopy.DeepCopy;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;

@@ -2,13 +2,11 @@ package adeuni.group.ec.algorithm.configuration;
 
 import adeuni.group.ec.algorithm.algorithms.InterfaceAlgorithm;
 import adeuni.group.ec.algorithm.component.evaluationfunction.InterfaceEvaluationFunction;
-import adeuni.group.ec.algorithm.component.operator.selection.InterfaceSelection;
 import adeuni.group.ec.algorithm.component.representation.InterfaceRepresentation;
-import adeuni.group.ec.algorithm.component.termination.InterfaceTerminationCriterion;
 import adeuni.group.ec.algorithm.component.termination.TerminationCriteriaPool;
-import adeuni.group.ec.algorithm.toolset.factory.RepresentationFactory;
-import adeuni.group.ec.algorithm.toolset.roulette.operator.VariationRoulette;
-import adeuni.group.ec.algorithm.toolset.roulette.selection.SelectionRoulette;
+import adeuni.group.ec.algorithm.utility.factory.RepresentationFactory;
+import adeuni.group.ec.algorithm.utility.roulette.operator.VariationRoulette;
+import adeuni.group.ec.algorithm.utility.roulette.selection.SelectionRoulette;
 
 import java.io.Serializable;
 
@@ -20,17 +18,20 @@ public class Configuration<T extends InterfaceRepresentation> implements Seriali
 
     protected TerminationCriteriaPool<? extends InterfaceAlgorithm> terminationCriteriaPool;
     protected InterfaceEvaluationFunction<T> evaluationFunction;
+
     private VariationRoulette variationRoulette;
     private SelectionRoulette parentSelectionRoulette;
-    private boolean replaceCandidate;
-    private int offspringSize;
-    private int eliteSize;
-    private int parentSurvivorSize;
-    private int offspringSurvivorSize;
     private SelectionRoulette parentSurvivorSelectionRoulette;
     private SelectionRoulette offspringSurvivorSelectionRoulette;
+
+    private int eliteSize;
+    private int parentSurvivorSize;
+    private int offspringSize;
+    private int offspringSurvivorSize;
+    private int immigrateSize;
+    private int solutionSpaceSize; //population size
+
     private RepresentationFactory<T> representationFactory;
-    private int solutionSpaceSize;
 
 
     public  TerminationCriteriaPool getTerminationCriteriaPool() {
@@ -64,15 +65,6 @@ public class Configuration<T extends InterfaceRepresentation> implements Seriali
 
     public void setParentSelectionRoulette(SelectionRoulette parentSelectionRoulette) {
         this.parentSelectionRoulette = parentSelectionRoulette;
-    }
-
-
-    public boolean isReplaceCandidate() {
-        return this.replaceCandidate;
-    }
-
-    public void setReplaceCandidate(boolean replaceCandidate) {
-        this.replaceCandidate = replaceCandidate;
     }
 
     public int getOffspringSize() {
@@ -138,6 +130,14 @@ public class Configuration<T extends InterfaceRepresentation> implements Seriali
 
     public void setSolutionSpaceSize(int solutionSpaceSize) {
         this.solutionSpaceSize = solutionSpaceSize;
+    }
+
+    public int getImmigrateSize() {
+        return immigrateSize;
+    }
+
+    public void setImmigrateSize(int immigrateSize) {
+        this.immigrateSize = immigrateSize;
     }
 }
 

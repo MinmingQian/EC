@@ -115,5 +115,13 @@ public abstract class AbstractListRepresentation<T>   implements InterfaceElemen
         return elementData;
     }
 
-
+    /**
+     * Check if contains the element
+     * @param e
+     * @return
+     */
+    @Override
+    public boolean contains(T e) {
+        return elementData.contains(e);
+    }
 }

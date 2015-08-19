@@ -30,6 +30,8 @@ public class AlgorithmState<T extends InterfaceRepresentation> implements Serial
 
     protected InterfaceAlgorithm<T> algorithm;
 
+    protected long totalExecutionTime;
+
 
     public  AlgorithmState (InterfaceAlgorithm<T> algorithm) {
         this.algorithm = algorithm;
@@ -75,5 +77,13 @@ public class AlgorithmState<T extends InterfaceRepresentation> implements Serial
         return currentIterationNumber;
     }
 
+    public long getTotalExecutionTime() {
+        return totalExecutionTime;
+    }
+
+
+    public void setTotalExecutionTime(long totalExecutionTime) {
+        this.totalExecutionTime = totalExecutionTime;
+    }
 }
 

@@ -1,6 +1,6 @@
 package adeuni.group.ec.algorithm.component.representation.permutation;
 
-import adeuni.group.ec.algorithm.toolset.randomnumbergenerator.ECRandom;
+import adeuni.group.ec.algorithm.utility.randomnumbergenerator.ECRandom;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +33,10 @@ public class PermutationRepresentation extends AbstractListRepresentation<Intege
         this.elementData = new ArrayList<Integer>();
     }
 
+    /**
+     * shuffle an
+     * @param length
+     */
     public void encode(int length) {
         ArrayList<Integer> origin = new ArrayList<>();
         int i, j;

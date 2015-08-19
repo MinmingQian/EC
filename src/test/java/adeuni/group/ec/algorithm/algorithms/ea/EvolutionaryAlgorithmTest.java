@@ -1,22 +1,18 @@
 package adeuni.group.ec.algorithm.algorithms.ea;
 
-import adeuni.group.ec.algorithm.component.operator.selection.InterfaceSelection;
 import adeuni.group.ec.algorithm.component.operator.selection.parent.BestSelection;
 import adeuni.group.ec.algorithm.component.representation.permutation.PermutationRepresentation;
-import adeuni.group.ec.algorithm.component.solution.Solution;
 import adeuni.group.ec.algorithm.component.solution.SolutionSpace;
 import adeuni.group.ec.algorithm.component.termination.IterationTerminationCriterion;
 import adeuni.group.ec.algorithm.component.termination.TerminationCriteriaPool;
 import adeuni.group.ec.algorithm.configuration.Configuration;
-import adeuni.group.ec.algorithm.toolset.factory.RepresentationFactory;
-import adeuni.group.ec.algorithm.toolset.roulette.selection.SelectionCell;
-import adeuni.group.ec.algorithm.toolset.roulette.selection.SelectionRoulette;
+import adeuni.group.ec.algorithm.utility.factory.RepresentationFactory;
+import adeuni.group.ec.algorithm.utility.roulette.selection.SelectionCell;
+import adeuni.group.ec.algorithm.utility.roulette.selection.SelectionRoulette;
 import adeuni.group.ec.tests.tsp.TspPermutationEvaluationFunction;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by qianminming on 18/08/15.

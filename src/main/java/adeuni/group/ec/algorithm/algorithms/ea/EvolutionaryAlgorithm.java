@@ -9,9 +9,9 @@ import adeuni.group.ec.algorithm.component.representation.InterfaceRepresentatio
 import adeuni.group.ec.algorithm.component.solution.Solution;
 import adeuni.group.ec.algorithm.component.solution.SolutionSpace;
 import adeuni.group.ec.algorithm.configuration.Configuration;
-import adeuni.group.ec.algorithm.toolset.factory.RepresentationFactory;
-import adeuni.group.ec.algorithm.toolset.roulette.operator.VariationRoulette;
-import adeuni.group.ec.algorithm.toolset.roulette.selection.SelectionRoulette;
+import adeuni.group.ec.algorithm.utility.factory.RepresentationFactory;
+import adeuni.group.ec.algorithm.utility.roulette.operator.VariationRoulette;
+import adeuni.group.ec.algorithm.utility.roulette.selection.SelectionRoulette;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;

@@ -73,4 +73,12 @@ public interface InterfaceElementsRepresentation<T> extends InterfaceRepresentat
      * @return the list
      */
     List<T> getElementData();
+
+
+    /**
+     * Check if contains the element
+     * @param e
+     * @return
+     */
+    boolean contains(T e);
 }

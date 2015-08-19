@@ -30,9 +30,7 @@ public abstract class AbstractPermutationCrossoverOperator extends AbstractCross
 
         //TODO: Is here requires a copy of the parents or totally new solution?
         Solution<PermutationRepresentation> childSolution1 = new Solution<PermutationRepresentation>(PermutationRepresentation.class);
-        childSolution1.getRepresentation().encode(fatherSolution.getRepresentation().size());
         Solution<PermutationRepresentation> childSolution2 = new Solution<PermutationRepresentation>(PermutationRepresentation.class);
-        childSolution2.getRepresentation().encode(fatherSolution.getRepresentation().size());
 
         //Crossover happenes inside, this is not hard copy, the result will shown out.
         genomeCrossover(fatherSolution.getRepresentation(),
